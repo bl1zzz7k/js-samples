@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Simple Polylines</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
     <script src="./index.js"></script>
-  </head>
-  <body>
-    <div id="map"></div>
+</head>
+<body>
+<div id="floating-panel">
+    <div>
+        <input id="latlng" type="text" placeholder="42.3544751,-71.0738739"/>
+        <input id="marker-name" type="text" placeholder="name" style="width: 50px"/>
+        <input id="add" type="button" value="Add marker"/>
+        <input id="delete-all-markers" type="button" value="Delete All"/>
+    </div>
+    <div>
+        <textarea name="coordinates" id="coordinates" cols="51" rows="10"
+                  placeholder="42.34473711487975, -71.0966985018252&#13;&#10;42.344870302508895, -71.0965495271266&#13;&#10;42.345002713605986, -71.09640031080848&#13;&#10;42.355828518334576, -71.0613046897706"></textarea>
+        <input id="draw" type="button" value="Draw line"/>
+        <input id="delete-all-lines" type="button" value="Delete All"/>
+    </div>
+    <div style="display: table">
+        <div style="width: 80%; float: left">
+            Point 1: <input id="p1" type="text" placeholder="42.3544751,-71.0738739"><br>
+            Point 2: <input id="p2" type="text" placeholder="42.355828518334576,-71.0613046897706">
+        </div>
+        <div style="float: right; width: 20%">
+            Distance: <div id="distance"></div>
+        </div>
+    </div>
+</div>
+<div id="map"></div>
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&v=weekly"
-      async
-    ></script>
-  </body>
+<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&v=weekly"
+        async
+></script>
+</body>
 </html>
