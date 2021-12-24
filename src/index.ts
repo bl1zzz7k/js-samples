@@ -34,10 +34,10 @@ function initMap(): void {
             disableDefaultUI: true
         }
     );
-    const infowindow = new google.maps.InfoWindow();
+
     (document.getElementById("add") as HTMLElement).addEventListener(
         "click",
-        () => addMarker(map, infowindow)
+        () => addMarker(map)
     );
 
     (document.getElementById("draw") as HTMLElement).addEventListener(
@@ -89,7 +89,6 @@ function drawPolyLine(map: google.maps.Map) {
 
 function addMarker(
     map: google.maps.Map,
-    infowindow: google.maps.InfoWindow
 ) {
     const positionInput = (document.getElementById("latlng") as HTMLInputElement).value;
     const markerName = (document.getElementById("marker-name") as HTMLInputElement).value;
@@ -98,7 +97,9 @@ function addMarker(
         lat: parseFloat(latlngStr[0]),
         lng: parseFloat(latlngStr[1]),
     };
-    infowindow.setContent(markerName)
+    const infowindow = new google.maps.InfoWindow({
+        content: markerName
+    });
 
     const marker = new google.maps.Marker({
         position: position,
